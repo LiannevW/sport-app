@@ -3,7 +3,7 @@ const connectDB = require('./config/db');
 
 const app = express();
 
-app.get('/', (req, res) => res.json({msg: 'Welcome to contactKeeper API'}));
+app.get('/', (req, res) => res.json({msg: 'Welcome to sport goal tracker API'}));
 
 // Connect to Database
 connectDB();
