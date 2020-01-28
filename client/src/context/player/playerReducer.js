@@ -6,7 +6,9 @@ import {
     CLEAR_CURRENT,
     UPDATE_PLAYER,
     FILTER_PLAYERS,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    PLAYER_ERROR,
+    CLEAR_PLAYERS
   } from '../types';
 
   export default (state, action) => {
@@ -27,7 +29,7 @@ import {
         return {
           ...state,
           players: state.players.map(player =>
-            player.id === action.payload.id ? action.payload : player
+            player._id === action.payload._id ? action.payload : player
           ),
           loading: false
         };
@@ -35,7 +37,7 @@ import {
         return {
           ...state,
           players: state.players.filter(
-            player => player.id !== action.payload
+            player => player._id !== action.payload
           ),
           loading: false
         };
@@ -47,6 +49,14 @@ import {
       case CLEAR_CURRENT:
         return {
           ...state,
+          current: null
+        };
+      case CLEAR_PLAYERS:
+        return {
+          ...state,
+          players: null,
+          filtered: null,
+          error: null,
           current: null
         };
       case FILTER_PLAYERS:
@@ -61,6 +71,11 @@ import {
         return {
           ...state,
           filtered: null
+        };
+      case PLAYER_ERROR:
+        return {
+          ...state,
+          error: action.payload
         };
       default:
         return state;

@@ -2,23 +2,30 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PlayerItem from './PlayerItem';
 import PlayerContext from '../../context/player/playerContext'
+import Spinner from '../layout/Spinner';
 
 const Players = () => {
   const playerContext = useContext(PlayerContext);
 
-  const { players, filtered } = playerContext;
+  const { players, filtered, getPlayers, loading } = playerContext;
 
-  if(players.length === 0) {
+  useEffect(() => {
+    getPlayers();
+    // eslint-disable-next-line
+  }, []);
+
+  if(players !== null && players.length === 0 && !loading) {
     return <h4>Please add a player</h4>
   }
 
   return (
     <Fragment>
-      <TransitionGroup>
+      {players !== null && !loading ? (
+        <TransitionGroup>
           {filtered !== null
             ? filtered.map(player => (
                 <CSSTransition
-                  key={player.id}
+                  key={player._id}
                   timeout={500}
                   classNames='item'
                 >
@@ -27,7 +34,7 @@ const Players = () => {
               ))
             : players.map(player => (
                 <CSSTransition
-                  key={player.id}
+                  key={player._id}
                   timeout={500}
                   classNames='item'
                 >
@@ -35,7 +42,10 @@ const Players = () => {
                 </CSSTransition>
               ))}
         </TransitionGroup>
-    </Fragment>
+    ) : (
+      <Spinner />
+    )}
+  </Fragment>
   );
 };
 
