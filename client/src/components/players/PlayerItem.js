@@ -6,10 +6,10 @@ const PlayerItem = ({ player }) => {
   const playerContext = useContext(PlayerContext);
   const { deletePlayer, setCurrent, clearCurrent } = playerContext;
 
-  const { id, name, email } = player;
+  const { _id, name, email } = player;
 
   const onDelete = () => {
-    deletePlayer(id);
+    deletePlayer(_id);
     clearCurrent();
   };
 
