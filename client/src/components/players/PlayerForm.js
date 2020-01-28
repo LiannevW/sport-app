@@ -30,7 +30,6 @@ const PlayerForm = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (current === null) {
-      console.log('add player, ', player)
       addPlayer(player);
     } else {
       updatePlayer(player);
