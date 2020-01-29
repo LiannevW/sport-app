@@ -11,10 +11,40 @@ const PlayerSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+    required: false
   },
-  scores: {
+  dateOfBirth: {
+    type: Date,
+    required: false
+  },
+  length: {
+    type: Number,
+    required: false
+  },
+  weight: {
+    type: Number,
+    required: false
+  },
+  gender: {
     type: String,
+    required: false
+  },
+  league: {
+    type: String,
+    required: false
+  },
+  position: {
+    type: String,
+    required: false
+  },
+  // Total score of player calculated with tests resutls
+  fitscore: {
+    type: Number,
+    required: false
+  },
+  // This becomes array of tests!
+  tests: {
+    type: Number,
     required: false
   },
   date: {

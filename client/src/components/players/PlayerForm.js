@@ -12,17 +12,31 @@ const PlayerForm = () => {
     } else {
       setPlayer({
         name: '',
-        email: ''
+        email: '',
+        fitscore: '',
+        dateOfBirth: '',
+        length: '',
+        weight: '',
+        gender: '',
+        league: '',
+        position: ''
       });
     }
   }, [playerContext, current]);
 
   const [player, setPlayer] = useState({
     name: '',
-    email: ''
+    email: '',
+    fitscore: '',
+    dateOfBirth: '',
+    length: '',
+    weight: '',
+    gender: '',
+    league: '',
+    position: ''
   });
 
-  const { name, email } = player;
+  const { name, email, fitscore, dateOfBirth, length, weight, gender, league, position } = player;
 
   const onChange = e =>
     setPlayer({ ...player, [e.target.name]: e.target.value });
@@ -58,6 +72,55 @@ const PlayerForm = () => {
         placeholder='Email'
         name='email'
         value={email}
+        onChange={onChange}
+      />
+      <input
+        type='date'
+        placeholder='geboorte datum'
+        name='dateOfBirth'
+        value={dateOfBirth}
+        onChange={onChange}
+      />
+      <input
+        type='number'
+        placeholder='length in cm'
+        name='length'
+        value={length}
+        onChange={onChange}
+      />
+      <input
+        type='number'
+        placeholder='weight in kg'
+        name='weight'
+        value={weight}
+        onChange={onChange}
+      />
+      <input
+        type='string'
+        placeholder='gender'
+        name='gender'
+        value={gender}
+        onChange={onChange}
+      />
+      <input
+        type='string'
+        placeholder='league'
+        name='league'
+        value={league}
+        onChange={onChange}
+      />
+      <input
+        type='string'
+        placeholder='position'
+        name='position'
+        value={position}
+        onChange={onChange}
+      />
+      <input
+        type='number'
+        placeholder='FITSCORE (remove and calculate)'
+        name='fitscore'
+        value={fitscore}
         onChange={onChange}
       />
       <div>
