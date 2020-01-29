@@ -65,7 +65,7 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
   title: 'Goal Sport tracker',
-  icon: 'fas fa-id-card-alt'
+  icon: 'far fa-futbol'
 };
 
 export default Navbar;

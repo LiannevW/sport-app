@@ -1,5 +1,8 @@
 import React, {useContext, useEffect} from 'react';
 
+// layout
+import PreviousLink from '../layout/PreviousLink';
+
 // players
 import Players from '../players/Players';
 import PlayerForm from '../players/PlayerForm';
@@ -17,14 +20,17 @@ const ManagePlayers = () => {
   }, []);
 
   return (
-    <div className='grid-2'>
-      <div>
-         <PlayerForm></PlayerForm>
-       </div>
-       <div>
-         <PlayerFilter></PlayerFilter>
-         <Players></Players>
-       </div>
+    <div>
+      <PreviousLink link={'/'} />
+      <div className='grid-2'>
+        <div>
+          <PlayerForm></PlayerForm>
+        </div>
+        <div>
+          <PlayerFilter></PlayerFilter>
+          <Players></Players>
+        </div>
+      </div>
     </div>
   );
 };
