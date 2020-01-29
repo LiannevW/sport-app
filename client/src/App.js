@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 // Pages
-import Home from './components/pages/Home';
 import About from './components/pages/About';
+import Home from './components/pages/Home';
+import Tests from './components/pages/Tests';
+import Results from './components/pages/Results';
+import ManagePlayers from './components/pages/ManagePlayers';
 
 // Sates
 import AlertState from './context/alert/AlertState'
@@ -37,7 +40,12 @@ function App() {
                 <Alerts/>
                 <Switch>
                   <PrivateRoute exact path='/' component={Home} />
+
+                  <Route exact path='/tests' component={Tests} />
+                  <Route exact path='/results' component={Results} />
+                  <Route exact path='/manage-players' component={ManagePlayers} />
                   <Route exact path='/about' component={About} />
+
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
                 </Switch>

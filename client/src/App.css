@@ -237,6 +237,7 @@ img {
 .alert-primary {
   background: var(--primary-color);
   color: #fff;
+  margin-bottom: 10px;
 }
 
 .btn-light,

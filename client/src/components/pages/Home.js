@@ -1,30 +1,19 @@
-import React, {useContext, useEffect} from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-// players
-import Players from '../players/Players';
-import PlayerForm from '../players/PlayerForm';
-import PlayerFilter from '../players/PlayerFilter';
-
-// context
-import AuthContext from '../../context/auth/authContext';
+import FitScore from '../results/FitScore';
 
 const Home = () => {
-  const authContext = useContext(AuthContext);
-
-  useEffect(() => {
-    authContext.loadUser();
-    // eslint-disable-next-line
-  }, []);
-
   return (
-    <div className='grid-2'>
-      <div>
-         <PlayerForm></PlayerForm>
-       </div>
-       <div>
-         <PlayerFilter></PlayerFilter>
-         <Players></Players>
-       </div>
+    <div>
+        <div>
+            <Link className='btn btn-primary btn-block' to='/tests'>Start test</Link>
+            <Link className='btn btn-primary btn-block' to='/results'>View test results</Link>
+            <Link className='btn btn-primary btn-block' to='/manage-players'>Add and edit players</Link>
+        </div>
+        <div>
+            <FitScore />
+        </div>
     </div>
   );
 };
