@@ -13,9 +13,7 @@ const User = require('../models/User');
 // @desc    Get logged user
 // @access  Private
 router.get('/', auth, async (req, res) => {
-  console.log('in get request for login User');
     try {
-      console.log('login user');
       const user = await User.findById(req.user.id).select('-password');
       res.json(user);
     } catch (err) {
@@ -39,8 +37,6 @@ router.post('/', [
     }
 
     const { email, password } = req.body;
-
-    console.log('auth.js req fro req.body', req);
 
     try {
       let user = await User.findOne({ email });

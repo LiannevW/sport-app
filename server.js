@@ -17,6 +17,7 @@ app.use(express.json({ extended: false }));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/players', require('./routes/players'));
+app.use('/api/scores', require('./routes/scores'));
 
 // Production
 if (process.env.NODE_ENV === 'production') {

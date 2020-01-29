@@ -309,6 +309,8 @@ input[type='text'],
 input[type='email'],
 input[type='password'],
 input[type='date'],
+input[type='number'],
+input[type='string'],
 select,
 textarea {
   display: block;
@@ -344,10 +346,15 @@ h3 {
   text-align: center;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 table th,
 table td {
   padding: 1rem;
   text-align: left;
+  border: 1px solid grey;
 }
 
 table th {

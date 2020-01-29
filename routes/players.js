@@ -35,18 +35,23 @@ async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { name, email, scores } = req.body;
+  const { name, email, fitscore, dateOfBirth, length, weight, gender, league, position } = req.body;
 
   try {
     const newPlayer = new Player({
       name,
       email,
-      scores,
+      fitscore,
+      dateOfBirth,
+      length,
+      weight,
+      gender,
+      league,
+      position,
       trainer: req.user.id
     });
 
     const player = await newPlayer.save();
-
     res.json(player);
   } catch (err) {
     console.error(err.message);
