@@ -5,6 +5,7 @@ import './App.css';
 // Pages
 import About from './components/pages/About';
 import Home from './components/pages/Home';
+import Test from './components/pages/Test';
 import Tests from './components/pages/Tests';
 import Results from './components/pages/Results';
 import ManagePlayers from './components/pages/ManagePlayers';
@@ -13,7 +14,8 @@ import ManagePlayers from './components/pages/ManagePlayers';
 import AlertState from './context/alert/AlertState'
 import Authstate from './context/auth/AuthSate';
 import PlayerState from './context/player/PlayerState';
-import ScoreState from './context/score/ScoreState';
+// import ScoreState from './context/score/ScoreState';
+import ExerciseState from './context/exercise/exerciseState';
 
 // Components
 import Alerts from './components/layout/Alerts';
@@ -34,7 +36,7 @@ function App() {
     <Authstate>
       <PlayerState>
         <AlertState>
-          <ScoreState>
+          <ExerciseState>
             <Router>
               <Fragment>
                 <Navbar />
@@ -44,6 +46,7 @@ function App() {
                     <PrivateRoute exact path='/' component={Home} />
 
                     <Route exact path='/tests' component={Tests} />
+                    <Route exact path='/tests/:id' component={Test} />
                     <Route exact path='/results' component={Results} />
                     <Route exact path='/manage-players' component={ManagePlayers} />
                     <Route exact path='/about' component={About} />
@@ -54,7 +57,7 @@ function App() {
                 </div>
               </Fragment>
             </Router>
-          </ScoreState>
+          </ExerciseState>
         </AlertState>
       </PlayerState>
     </Authstate>
