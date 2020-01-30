@@ -11,13 +11,14 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // DEV
-// app.get('/', (req, res) => res.json({msg: 'Welcome to sport goal tracker API'}));
+app.get('/', (req, res) => res.json({msg: 'Welcome to sport goal tracker API'}));
 
 // Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/players', require('./routes/players'));
-app.use('/api/scores', require('./routes/scores'));
+app.use('/api/tests', require('./routes/tests'));
+app.use('/api/exercises', require('./routes/exercises'));
 
 // Production
 if (process.env.NODE_ENV === 'production') {

@@ -1,5 +1,5 @@
-import { createContext } from 'react';
+// import { createContext } from 'react';
 
-const scoreContext = createContext();
+// const scoreContext = createContext();
 
-export default scoreContext;
+// export default scoreContext;

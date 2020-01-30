@@ -12,7 +12,7 @@ const Home = () => {
             <Link className='btn btn-primary btn-block' to='/manage-players'>Add and edit players</Link>
         </div>
         <div>
-            <FitScore />
+            {/* <FitScore /> */}
         </div>
     </div>
   );

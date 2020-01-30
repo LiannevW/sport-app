@@ -27,3 +27,9 @@ export const PLAYER_ERROR = 'PLAYER_ERROR';
 // scores
 export const GET_FITSCORE = 'GET_FITSCORE'
 export const FITSCORE_ERROR ='FITSCORE_ERROR'
+
+// exercises
+export const GET_EXERCISES = 'GET_EXERCISES'
+export const SET_CURRENT_EXERCISE = 'SET_CURRENT_EXERCISE'
+export const EXERCISES_ERROR = 'GET_EXERCISES'
+
