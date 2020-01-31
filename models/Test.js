@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const TestsSchema = mongoose.Schema({
-  trainer: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
-  },
   player: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'players'
@@ -13,11 +9,19 @@ const TestsSchema = mongoose.Schema({
     type: String,
     required: false
   },
-  fitScore: {
+  exercise0: {
     type: Number,
     required: false
   },
-  exercise0: {
+  exercise1: {
+    type: Number,
+    required: false
+  },
+  exercise2: {
+    type: Number,
+    required: false
+  },
+  fitScore: {
     type: Number,
     required: false
   },
