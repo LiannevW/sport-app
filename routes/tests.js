@@ -25,15 +25,22 @@ const Test = require('../models/Test');
 // router.post('/', async (req, res) => {
 router.post('/', [ auth, []], async (req, res) => {
   try {
-    const { date, exercise0 } = req.body;
+    const { player, date, exercise0, exercise1, exercise2 } = req.body;
+
+    // TODO calculate fitScore
+    const fitScore = (exercise0 + exercise1 + exercise2) / 3;
 
     const newTest = new Test ({
+      player,
       date,
       exercise0,
-      trainer: req.user.id
+      exercise1,
+      exercise2,
+      fitScore
     })
 
-    const test = await newTest.save()
+    const test = await newTest.save();
+
     res.json(
       test
     );

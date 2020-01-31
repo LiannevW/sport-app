@@ -24,9 +24,10 @@ export const CLEAR_PLAYERS = 'CLEAR_PLAYERS';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
 export const PLAYER_ERROR = 'PLAYER_ERROR';
 
-// scores
-export const GET_FITSCORE = 'GET_FITSCORE'
-export const FITSCORE_ERROR ='FITSCORE_ERROR'
+// tests
+export const GET_TESTS = 'GET_TESTS';
+export const ADD_TEST = 'ADD_TEST';
+export const TEST_ERROR = 'TEST_ERROR';
 
 // exercises
 export const GET_EXERCISES = 'GET_EXERCISES'
