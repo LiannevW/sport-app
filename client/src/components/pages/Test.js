@@ -1,47 +1,43 @@
 import React, { useContext, useEffect } from 'react';
-import PreviousLink from '../layout/PreviousLink';
-import TestForm from '../../components/tests/TestForm';
-import Spinner from '../layout/Spinner';
+import { Link } from 'react-router-dom';
 
 import ExerciseContext from '../../context/exercise/exerciseContext';
 
-const Test = (props) => {
+// components
+import PreviousLink from '../layout/PreviousLink';
+import Spinner from '../layout/Spinner';
+
+const Test = () => {
   const exerciseContext = useContext(ExerciseContext);
 
-  const { currentExercise, getExercise } = exerciseContext;
+  const { exercises, getExercises } = exerciseContext;
+
+  const getRoute = (id) => {
+    // TODO: add relative route
+    return 'exercise/' + id
+  }
 
   useEffect(() => {
-    getExercise();
+    getExercises();
     // eslint-disable-next-line
   }, []);
 
   return (
     <div>
-      <PreviousLink link={'/tests'}/>
-      {currentExercise !== null ? (
-        <div>
-          <p>Naam van de test</p>
-          <p>Omschrijving van de test:</p>
-          <p>Score invullen. Welke speler? Welke score?</p>
-        </div>
-       )
-      : (
-        <Spinner />
-      )}
-      <TestForm />
+      <PreviousLink link={'/'} />
+      <h1>On this page: all tests + Enter scores </h1>
+
+      <div>
+        {exercises !== null ? (
+          exercises.map((exercise) => (
+            <Link key={exercise.id} className='btn btn-primary btn-block' to={getRoute(exercise.id)}>{exercise.name}</Link>
+          ))
+        ) : (
+            <Spinner />
+          )}
+      </div>
     </div>
   );
 };
 
 export default Test;
-
-// {currentExercise !== null ? (
-//   <div>
-//     <p>Naam van de test</p>
-//     <p>Omschrijving van de test:</p>
-//     <p>Score invullen. Welke speler? Welke score?</p>
-//   </div>
-//  )
-// : (
-//   <Spinner />
-// )}

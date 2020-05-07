@@ -4,10 +4,10 @@ import PreviousLink from '../layout/PreviousLink';
 const About = () => {
   return (
     <div>
-      <PreviousLink/>
+      <PreviousLink />
       <h1>About this sport app</h1>
       <p className='my-1'>
-        This is an soccer goal app.
+        This is a soccer app.
       </p>
     </div>
   );

@@ -5,8 +5,8 @@ import './App.css';
 // Pages
 import About from './components/pages/About';
 import Home from './components/pages/Home';
+import Exercise from './components/pages/Exercise';
 import Test from './components/pages/Test';
-import Tests from './components/pages/Tests';
 import Results from './components/pages/Results';
 import ManagePlayers from './components/pages/ManagePlayers';
 
@@ -42,12 +42,12 @@ function App() {
                 <Fragment>
                   <Navbar />
                   <div className="container">
-                    <Alerts/>
+                    <Alerts />
                     <Switch>
                       <PrivateRoute exact path='/' component={Home} />
 
-                      <Route exact path='/tests' component={Tests} />
-                      <Route exact path='/tests/:id' component={Test} />
+                      <Route exact path='/test' component={Test} />
+                      <Route exact path='/exercise/:id' component={Exercise} />
                       <Route exact path='/results' component={Results} />
                       <Route exact path='/manage-players' component={ManagePlayers} />
                       <Route exact path='/about' component={About} />
