@@ -9,46 +9,47 @@ import Spinner from '../layout/Spinner';
 
 // Form to select player and add score
 const TestForm = () => {
-    const playerContext = useContext(PlayerContext);
-    const testContext = useContext(TestContext);
+  const playerContext = useContext(PlayerContext);
+  const testContext = useContext(TestContext);
 
-    const { players, getPlayers, loading } = playerContext;
-    const { addTest } = testContext;
+  const { players, getPlayers, loading } = playerContext;
+  const { addTest } = testContext;
 
-    useEffect(() => {
-      getPlayers();
-      setTest({
-        player: '',
-        date: '',
-        exercise0: '',
-        exercise1: '',
-        exercise2: ''
-      });
-      // eslint-disable-next-line
-    }, []);
-
-    const [test, setTest] = useState({
+  useEffect(() => {
+    getPlayers();
+    setTest({
       player: '',
       date: '',
       exercise0: '',
       exercise1: '',
       exercise2: ''
     });
+    // eslint-disable-next-line
+  }, []);
 
-    const { player, date, exercise0, exercise1, exercise2 }  = test
+  const [test, setTest] = useState({
+    player: '',
+    date: '',
+    exercise0: '',
+    exercise1: '',
+    exercise2: ''
+  });
 
-    const onChange = e => {
-      setTest({ ...test, [e.target.name]: e.target.value });
-    }
+  // const { player, date, exercise0, exercise1, exercise2 }  = test
+  const { date } = test
 
-    const onSubmit = e => {
-      e.preventDefault();
-      addTest(test);
-      // TODO add clearForm
-    };
+  const onChange = e => {
+    setTest({ ...test, [e.target.name]: e.target.value });
+  }
 
-    // TODO refactor to get param from path
-    const getExerciseName = 'exercise' + window.location.pathname.charAt(window.location.pathname.length-1);
+  const onSubmit = e => {
+    e.preventDefault();
+    addTest(test);
+    // TODO add clearForm
+  };
+
+  // TODO refactor to get param from path
+  const getExerciseName = 'exercise' + window.location.pathname.charAt(window.location.pathname.length - 1);
 
   return (
     <div>
@@ -82,8 +83,8 @@ const TestForm = () => {
           </div>
         </form>
       ) : (
-        <Spinner />
-      )}
+          <Spinner />
+        )}
     </div>
   );
 };

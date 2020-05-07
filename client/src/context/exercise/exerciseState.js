@@ -10,44 +10,43 @@ import {
 } from '../types'
 
 const ExerciseState = props => {
-    const initialState = {
-        exercises: null,
-    };
+  const initialState = {
+    exercises: null,
+  };
 
   const [state, dispatch] = useReducer(ExerciseReducer, initialState);
 
   // Get exercises
   const getExercises = async () => {
-      try {
+    try {
       const res = await axios.get('/api/exercises');
 
       dispatch({
-          type: GET_EXERCISES,
-          payload: res.data
+        type: GET_EXERCISES,
+        payload: res.data
       });
-      } catch (err) {
+    } catch (err) {
       dispatch({
-          type: EXERCISES_ERROR,
-          payload: err.response.msg
+        type: EXERCISES_ERROR,
+        payload: err.response.msg
       });
-      }
+    }
   };
 
   // Get one exercise by id
-  const getExercise = async () => {
-    // TODO! GET ID FROM REQUEST NOT HARDCODED
+  const getExercise = async (id) => {
     try {
-      const res = await axios.get(`/api/exercises/0`);
+      const res = await axios.get(`/api/exercises/${id}`);
       dispatch({
-          type: SET_CURRENT_EXERCISE,
-          payload: res.data
+        type: SET_CURRENT_EXERCISE,
+        payload: res.data
       });
-      } catch (err) {
+    } catch (err) {
       dispatch({
-          type: EXERCISES_ERROR,
-          payload: err.response.msg
+        type: EXERCISES_ERROR,
+        payload: err.response.msg
       });
-      }
+    }
   };
 
   return (
