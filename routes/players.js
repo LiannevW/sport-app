@@ -10,54 +10,55 @@ const Player = require('../models/Player');
 // @access  Private
 router.get('/', auth, async (req, res) => {
   try {
-      const players = await Player.find({ trainer: req.user.id }).sort({
-        date: -1
-      });
-      res.json(players);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server Error');
-    }
-  });
-
-// @route   POST api/player
-// @desc    Add new player
-// @access  Private
-router.post('/', [ auth, [
-    check('name', 'Name is required')
-      .not()
-      .isEmpty()
-  ]
-],
-async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
-  const { name, email, fitscore, dateOfBirth, length, weight, gender, league, position } = req.body;
-
-  try {
-    const newPlayer = new Player({
-      name,
-      email,
-      fitscore,
-      dateOfBirth,
-      length,
-      weight,
-      gender,
-      league,
-      position,
-      trainer: req.user.id
+    const players = await Player.find({ trainer: req.user.id }).sort({
+      date: -1
     });
 
-    const player = await newPlayer.save();
-    res.json(player);
+    res.json(players);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
-}
+});
+
+// @route   POST api/player
+// @desc    Add new player
+// @access  Private
+router.post('/', [auth, [
+  check('name', 'Name is required')
+    .not()
+    .isEmpty()
+]
+],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { name, email, fitscore, dateOfBirth, length, weight, gender, league, position } = req.body;
+
+    try {
+      const newPlayer = new Player({
+        name,
+        email,
+        fitscore,
+        dateOfBirth,
+        length,
+        weight,
+        gender,
+        league,
+        position,
+        trainer: req.user.id
+      });
+
+      const player = await newPlayer.save();
+      res.json(player);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
 );
 
 // @route   PUT api/player/:id
@@ -98,6 +99,7 @@ router.put('/:id', auth, async (req, res) => {
 // @route   DELETE api/player/:id
 // @desc    Update player
 // @access  Private
+// TODO! remove all tests of this player
 router.delete('/:id', auth, async (req, res) => {
   try {
     let player = await Player.findById(req.params.id);

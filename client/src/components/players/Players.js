@@ -14,7 +14,7 @@ const Players = () => {
     // eslint-disable-next-line
   }, []);
 
-  if(players !== null && players.length === 0 && !loading) {
+  if (players !== null && players.length === 0 && !loading) {
     return <h4>Please add a player</h4>
   }
 
@@ -24,28 +24,28 @@ const Players = () => {
         <TransitionGroup>
           {filtered !== null
             ? filtered.map(player => (
-                <CSSTransition
-                  key={player._id}
-                  timeout={500}
-                  classNames='item'
-                >
-                  <PlayerItem player={player} />
-                </CSSTransition>
-              ))
+              <CSSTransition
+                key={player._id}
+                timeout={500}
+                classNames='item'
+              >
+                <PlayerItem player={player} />
+              </CSSTransition>
+            ))
             : players.map(player => (
-                <CSSTransition
-                  key={player._id}
-                  timeout={500}
-                  classNames='item'
-                >
-                  <PlayerItem player={player} />
-                </CSSTransition>
-              ))}
+              <CSSTransition
+                key={player._id}
+                timeout={500}
+                classNames='item'
+              >
+                <PlayerItem player={player} />
+              </CSSTransition>
+            ))}
         </TransitionGroup>
-    ) : (
-      <Spinner />
-    )}
-  </Fragment>
+      ) : (
+          <Spinner />
+        )}
+    </Fragment>
   );
 };
 

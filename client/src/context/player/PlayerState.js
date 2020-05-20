@@ -27,17 +27,17 @@ const PlayerState = props => {
     // Get players
     const getPlayers = async () => {
         try {
-        const res = await axios.get('/api/players');
+            const res = await axios.get('/api/players');
 
-        dispatch({
-            type: GET_PLAYERS,
-            payload: res.data
-        });
+            dispatch({
+                type: GET_PLAYERS,
+                payload: res.data
+            });
         } catch (err) {
-        dispatch({
-            type: PLAYER_ERROR,
-            payload: err.response.msg
-        });
+            dispatch({
+                type: PLAYER_ERROR,
+                payload: err.response.msg
+            });
         }
     };
 
@@ -45,73 +45,73 @@ const PlayerState = props => {
     const addPlayer = async player => {
         const config = {
             headers: {
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             }
         }
 
-    try {
-        const res = await axios.post('/api/players', player, config);
-
-        dispatch({
-            type:  ADD_PLAYER,
-            payload: res.data
-        })
-    } catch (err) {
-        dispatch({
-            type: PLAYER_ERROR,
-            payload: err.respons.msg
-        });
-    }
-
-    }
-
-     // Delete player
-     const deletePlayer = async id => {
         try {
-          await axios.delete(`/api/players/${id}`);
+            const res = await axios.post('/api/players', player, config);
 
-          dispatch({
-            type: DELETE_PLAYER,
-            payload: id
-          });
+            dispatch({
+                type: ADD_PLAYER,
+                payload: res.data
+            })
         } catch (err) {
-          dispatch({
-            type: PLAYER_ERROR,
-            payload: err.response.msg
-          });
+            dispatch({
+                type: PLAYER_ERROR,
+                payload: err.respons.msg
+            });
         }
-      };
+
+    }
+
+    // Delete player
+    const deletePlayer = async id => {
+        try {
+            await axios.delete(`/api/players/${id}`);
+
+            dispatch({
+                type: DELETE_PLAYER,
+                payload: id
+            });
+        } catch (err) {
+            dispatch({
+                type: PLAYER_ERROR,
+                payload: err.response.msg
+            });
+        }
+    };
 
     // Update player
     const updatePlayer = async player => {
         const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
+            headers: {
+                'Content-Type': 'application/json'
+            }
         };
 
         try {
-        const res = await axios.put(
-            `/api/players/${player._id}`,
-            player,
-            config
-        );
+            const res = await axios.put(
+                `/api/players/${player._id}`,
+                player,
+                config
+            );
 
-        dispatch({
-            type: UPDATE_PLAYER,
-            payload: res.data
-        });
+            dispatch({
+                type: UPDATE_PLAYER,
+                payload: res.data
+            });
         } catch (err) {
-        dispatch({
-            type: PLAYER_ERROR,
-            payload: err.response.msg
-        });
+            dispatch({
+                type: PLAYER_ERROR,
+                payload: err.response.msg
+            });
         }
     };
 
     // Clear players
     const clearPlayers = () => {
-        dispatch({ type: CLEAR_PLAYERS})
+        dispatch({ type: CLEAR_PLAYERS })
     }
 
     // Set current player
@@ -131,26 +131,26 @@ const PlayerState = props => {
 
     // Clear filter
     const clearFilter = () => {
-        dispatch({ type: CLEAR_FILTER})
+        dispatch({ type: CLEAR_FILTER })
     }
 
     return (
         <PlayerContext.Provider
-        value={{
-            players: state.players,
-            current: state.current,
-            filtered: state.filtered,
-            getPlayers,
-            addPlayer,
-            deletePlayer,
-            setCurrent,
-            clearCurrent,
-            updatePlayer,
-            filterPlayers,
-            clearFilter,
-            clearPlayers
-        }}>
-            { props.children }
+            value={{
+                players: state.players,
+                current: state.current,
+                filtered: state.filtered,
+                getPlayers,
+                addPlayer,
+                deletePlayer,
+                setCurrent,
+                clearCurrent,
+                updatePlayer,
+                filterPlayers,
+                clearFilter,
+                clearPlayers
+            }}>
+            {props.children}
         </PlayerContext.Provider>
     )
 };

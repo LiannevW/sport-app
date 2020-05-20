@@ -26,7 +26,7 @@ export const PLAYER_ERROR = 'PLAYER_ERROR';
 
 // tests
 export const GET_TESTS = 'GET_TESTS';
-export const ADD_TEST = 'ADD_TEST';
+export const CHECK_TEST = 'CHECK_TEST'
 export const TEST_ERROR = 'TEST_ERROR';
 
 // exercises
