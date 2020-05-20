@@ -1,11 +1,12 @@
 import React, { useEffect, useContext, useState } from 'react';
 
 // context
-import PlayerContext from '../../context/player/playerContext';
-import TestContext from '../../context/test/testContext';
+import PlayerContext from './../../../context/player/playerContext';
+import TestContext from './../../../context/test/testContext';
 
 // components
-import Spinner from '../layout/Spinner';
+import Spinner from './../../layout/Spinner';
+import ExerciseInput from './ExerciseInput';
 
 // Form to select player and add score
 const TestForm = () => {
@@ -40,7 +41,7 @@ const TestForm = () => {
     submit: ''
   });
 
-  const { player, date, exercise0, exercise1 } = test
+  const { player, date } = test
 
   const idOfExercise = window.location.pathname.charAt(window.location.pathname.length - 1)
 
@@ -73,7 +74,7 @@ const TestForm = () => {
             <h1>Select player and add score to this exercise</h1>
             {submit.submit === true ? <p>De gegevens zijn opgeslagen</p> : ''}
             <select value={player} name='player' onChange={onChange} onBlur={onChange} required>
-              <option value='' disabled>Select a player</option>
+              <option value='' disabled>Selecteer een speler</option>
               {players.map(player => (
                 <option key={player._id} value={player._id}>{player.name}</option>
               ))}
@@ -86,28 +87,7 @@ const TestForm = () => {
               onChange={onChange}
               required
             />
-            {idOfExercise === '0' ?
-              <input
-                type='number'
-                placeholder={'vul hier de score in'}
-                name='exercise0'
-                value={exercise0}
-                onChange={onChange}
-                required
-              />
-              :
-              ''}
-            {idOfExercise === '1' ?
-              <input
-                type='number'
-                placeholder={'vul hier de score in'}
-                name='exercise1'
-                value={exercise1}
-                onChange={onChange}
-                required
-              />
-              :
-              ''}
+            <ExerciseInput id={idOfExercise} onChange={onChange} name={'exercise' + idOfExercise} value={'exercise' + idOfExercise} />
             <div>
               <input
                 type='submit'

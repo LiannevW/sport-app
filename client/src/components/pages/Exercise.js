@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PreviousLink from '../layout/PreviousLink';
-import TestForm from '../tests/TestForm';
+import TestForm from '../tests/testForm/TestForm';
 import Spinner from '../layout/Spinner';
 
 import ExerciseContext from '../../context/exercise/exerciseContext';

@@ -1,6 +1,5 @@
 import {
   GET_TESTS,
-  ADD_TEST,
   CHECK_TEST,
   TEST_ERROR
 } from '../types';
